@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Custom Dialog Example</title>
+  </head>
+  <body>
+    <button id="open-dialog">Open Dialog</button>
+
+    <script type="module">
+      import createDialog from './customdialog.js';
+
+      const openDialogButton = document.querySelector('#open-dialog');
+
+      openDialogButton.addEventListener('click', () => {
+        createDialog(
+          'Example Dialog',
+          'This is some example dialog content!',
+          [
+            {
+              label: 'Close',
+              callback: () => {
+                console.log('Dialog closed!');
+              },
+            },
+          ]
+        );
+      });
+    </script>
+  </body>
+</html>

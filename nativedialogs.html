@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Part 1</title>
+</head>
+<body>
+    <h1>Part 1</h1>
+    <button id="alert">Alert</button>
+    <button id="confirm">Confirm</button>
+    <button id="prompt">Prompt</button>
+    <button id="saferPrompt">Safer Prompt</button>
+    <br><br><br>
+    <form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+        <input type="range" id="b" name="b" value="50" /> +
+        <input type="number" id="a" name="a" value="10" /> =
+        <output id="opt" name="result" for="a b">60</output>
+    </form>
+    <br><br>
+    <name id="user-name"></name>
+
+    <script>
+        let el1 = document.getElementById('alert');
+        el1.addEventListener('click', alertFunc);
+        function alertFunc() {
+            alert('hi');
+        }
+        
+        let el2 = document.getElementById('confirm');
+        el2.addEventListener('click', changeOutput);
+        function changeOutput() {
+            let opt = document.querySelector("#opt")
+            // cannot return value of result or the sum of a and b
+            opt.textContent = `The value returned by the confirm method is: ${parseInt(a.value)}`;
+        }
+
+        let el3 = document.getElementById('prompt');
+        let userName = document.getElementById('user-name')
+        el3.addEventListener('click', promptMsg);
+        function promptMsg() {
+            let msg = window.prompt("What's your name?");
+            // let cleanMsg = DOMPurify.sanitize(msg);
+            if (msg === null) {
+                userName.textContent = 'User didn\'t input his/her name';
+            } else {
+                userName.textContent = `Your name is: ${msg}`;
+            }
+        }
+
+        // import DOMPurify from 'dompurify';
+        let el4 = document.getElementById('saferPrompt');
+        el4.addEventListener('click', safePromptMsg);
+        function safePromptMsg() {
+            let msg = window.prompt("What's your name?");
+            // let cleanMsg = DOMPurify.sanitize(msg);
+            if (msg === null) {
+                userName.textContent = 'User didn\'t input his/her name';
+            } else {
+                userName.textContent = `Your name is: ${cleanMsg}`;
+            }
+        }
+    </script>
+</body>
+</html>
