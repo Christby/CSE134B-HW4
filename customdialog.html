@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Custom Dialog Example</title>
-  </head>
-  <body>
-    <button id="open-dialog">Open Dialog</button>
+    <title>Custom Dialog</title>
+</head>
+<body>
+    <h1>Custom Dialog</h1>
+
+    <dialog id="custom-dialog">
+
+    </dialog>
+    <button id="dialog-starter">Start the dialog</button>
+    <output id="output-text">hello</output>
 
     <script type="module">
-      import createDialog from './customdialog.js';
+        const startButton = document.getElementById('dialog-starter');
+        const myDialog = document.getElementById('custom-dialog');
+        const outputBox = document.querySelector('output');
 
-      const openDialogButton = document.querySelector('#open-dialog');
+        // clicking the button opens the <dialog>
+        startButton.addEventListener('click', () => {
+            myDialog.showModal();
+        });
 
-      openDialogButton.addEventListener('click', () => {
-        createDialog(
-          'Example Dialog',
-          'This is some example dialog content!',
-          [
-            {
-              label: 'Close',
-              callback: () => {
-                console.log('Dialog closed!');
-              },
-            },
-          ]
-        );
-      });
+        // import {sayHi} from './customdialog.js';
+        // let txt = document.getElementById('output-text')
+        // txt.innerHTML = sayHi('John');
     </script>
-  </body>
+</body>
 </html>

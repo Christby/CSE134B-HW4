@@ -2,22 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Part 1</title>
+    <title>Simple Dialogs</title>
+    <!-- <script src=“https://cdn.jsdelivr.net/npm/dompurify@2.3.2/dist/purify.min.js”></script> -->
+    <!-- <script type="text/javascript" src="src/purify.js"></script> -->
+    <!-- <script type="text/javascript" src="dist/purify.min.js"></script> -->
+    <script src=node_modules/dompurify/dist/purify.min.js></script>
 </head>
 <body>
-    <h1>Part 1</h1>
+    <h1>Simple Dialogs</h1>
     <button id="alert">Alert</button>
     <button id="confirm">Confirm</button>
     <button id="prompt">Prompt</button>
     <button id="saferPrompt">Safer Prompt</button>
-    <br><br><br>
-    <form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
-        <input type="range" id="b" name="b" value="50" /> +
-        <input type="number" id="a" name="a" value="10" /> =
-        <output id="opt" name="result" for="a b">60</output>
-    </form>
     <br><br>
-    <name id="user-name"></name>
+    <output id="user-name"></output>
 
     <script>
         let el1 = document.getElementById('alert');
@@ -27,11 +25,11 @@
         }
         
         let el2 = document.getElementById('confirm');
+        let opt = document.getElementById('user-name');
         el2.addEventListener('click', changeOutput);
         function changeOutput() {
-            let opt = document.querySelector("#opt")
-            // cannot return value of result or the sum of a and b
-            opt.textContent = `The value returned by the confirm method is: ${parseInt(a.value)}`;
+            let bol = confirm("Do you confirm?");
+            opt.textContent = `Confirm result: ${bol}`;
         }
 
         let el3 = document.getElementById('prompt');
@@ -39,23 +37,22 @@
         el3.addEventListener('click', promptMsg);
         function promptMsg() {
             let msg = window.prompt("What's your name?");
-            // let cleanMsg = DOMPurify.sanitize(msg);
             if (msg === null) {
                 userName.textContent = 'User didn\'t input his/her name';
             } else {
                 userName.textContent = `Your name is: ${msg}`;
             }
         }
-
+        
         // import DOMPurify from 'dompurify';
         let el4 = document.getElementById('saferPrompt');
         el4.addEventListener('click', safePromptMsg);
         function safePromptMsg() {
             let msg = window.prompt("What's your name?");
-            // let cleanMsg = DOMPurify.sanitize(msg);
             if (msg === null) {
                 userName.textContent = 'User didn\'t input his/her name';
             } else {
+                let cleanMsg = DOMPurify.sanitize(msg);
                 userName.textContent = `Your name is: ${cleanMsg}`;
             }
         }
