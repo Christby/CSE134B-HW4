@@ -24,7 +24,7 @@ main {
     justify-content: center;
     width: 100%;
     background-color: azure;
-    background-image: url("files/background.jpg");
+    background-image: url("../files/background.jpg");
 }
 
 header {
