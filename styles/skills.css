@@ -1,0 +1,66 @@
+@font-face {
+    font-family: Spectral;
+    src: url(../Spectral-Regular.ttf);
+}
+
+body {
+    background-image: url("../background.jpg");
+    font-family: Spectral;
+}
+
+h1 {
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+
+.tech_skill {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1em;
+    gap: 3em;
+    justify-content: center;
+    margin-bottom: 7%;
+}
+
+.team_skill {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1em;
+    gap: 3em;
+    justify-content: center;
+    margin-bottom: 8%;
+}
+
+.skill {
+    max-width: 60ch;
+    font-size: 1rem;
+    border: 3px solid turquoise;
+    border-radius: 10px;
+    padding: 0.5em 0.5em;
+    margin: 0 0;
+    background-color: rgb(244, 249, 250, 0.6);
+}
+
+@media (max-width: 675px) {
+    .tech_skill {
+        flex-direction: column;
+    }
+    .team_skill {
+        flex-direction: column;
+    }
+    .skill {
+        max-width: 150ch;
+    }
+}
+
+form {
+    text-align: center;
+}
