@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url("files/background.jpg");
+    background-image: url("../files/background.jpg");
     font-family: Spectral;
 }
 picture {
