@@ -44,7 +44,7 @@
         el4.addEventListener('click', safePromptMsg);
         function safePromptMsg() {
             let msg = window.prompt("What's your name?");
-            if (msg === null) {
+            if (msg === "") {
                 userName.textContent = 'User didn\'t input his/her name';
             } else {
                 let cleanMsg = DOMPurify.sanitize(msg);

@@ -1,5 +1,4 @@
 function showAlert(message) {
-  // first, clean the message using DOMPurify
   let msg = DOMPurify.sanitize(message);
   const dialogTemplate = document.querySelector('#alert-dialog');
   const dialog = dialogTemplate.content.cloneNode(true).querySelector('dialog');
@@ -11,13 +10,11 @@ function showAlert(message) {
 }
 
 function showConfirm(message, outputTag) {
-  // first, clean the message using DOMPurify
   let msg = DOMPurify.sanitize(message);
   const dialogTemplate = document.querySelector('#confirm-dialog');
   const dialog = dialogTemplate.content.cloneNode(true).querySelector('dialog');
   dialog.querySelector('.header').textContent = 'Confirm';
   dialog.querySelector('.body').textContent = msg;
-  // not sure how to handle the output from here
   dialog.querySelector('.ok').addEventListener('click', () => {
     outputTag.textContent = `Confirm result: true`;
     dialog.close();
@@ -31,22 +28,20 @@ function showConfirm(message, outputTag) {
 }
 
 function showPrompt(message, outputTag) {
-  // first, clean the message using DOMPurify
   let msg = DOMPurify.sanitize(message);
   const dialogTemplate = document.querySelector('#prompt-dialog');
   const dialog = dialogTemplate.content.cloneNode(true).querySelector('dialog');
   dialog.querySelector('.header').textContent = 'Prompt';
   dialog.querySelector('.body').textContent = msg;
-  let input = document.createElement('input');
-  input.type = 'text';
-  dialog.querySelector('.body').appendChild(input);
-  // not sure how to handle the output from here
+  const inputText = dialog.querySelector('.input-text');
+  console.log(inputText);
   dialog.querySelector('.ok').addEventListener('click', () => {
-    if (input === null) {
+    let name = inputText.value;
+    if (name === "") {
       outputTag.textContent = 'User didn\'t input his/her name';
       dialog.close();
     } else {
-      let cleanInput = DOMPurify.sanitize(input);
+      let cleanInput = DOMPurify.sanitize(name);
       outputTag.textContent = `Your name is: ${cleanInput}`;
       dialog.close();
     }
