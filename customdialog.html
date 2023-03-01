@@ -3,29 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Custom Dialog</title>
+    <script src=node_modules/dompurify/dist/purify.min.js></script>
 </head>
 <body>
     <h1>Custom Dialog</h1>
 
-    <dialog id="custom-dialog">
+    <button id="alert">Alert</button>
+    <button id="confirm">Confirm</button>
+    <button id="prompt">Prompt</button>
+    <br><br>
+    <output id="dialog-output"></output>
 
-    </dialog>
-    <button id="dialog-starter">Start the dialog</button>
-    <output id="output-text">hello</output>
+    <template id="alert-dialog">
+        <dialog>
+          <div class="header"></div>
+          <div class="body"></div>
+          <div class="buttons">
+            <button>OK</button>
+          </div>
+        </dialog>
+      </template>
+  
+    <template id="confirm-dialog">
+        <dialog>
+          <div class="header"></div>
+          <div class="body"></div>
+          <div class="buttons">
+            <button class="ok">OK</button>
+            <button class="cancel">Cancel</button>
+          </div>
+        </dialog>
+    </template>
+  
+    <template id="prompt-dialog">
+        <dialog>
+          <div class="header"></div>
+          <div class="body"></div>
+          <div class="buttons">
+            <button class="ok">OK</button>
+            <button class="cancel">Cancel</button>
+          </div>
+        </dialog>
+    </template>
 
     <script type="module">
-        const startButton = document.getElementById('dialog-starter');
-        const myDialog = document.getElementById('custom-dialog');
-        const outputBox = document.querySelector('output');
+        import {showAlert, showConfirm, showPrompt} from './customdialog.js';
 
-        // clicking the button opens the <dialog>
-        startButton.addEventListener('click', () => {
-            myDialog.showModal();
-        });
+        let el1 = document.getElementById('alert');
+        el1.addEventListener('click', () => {
+            showAlert("this is the custom alert dialog")
+        })
 
-        // import {sayHi} from './customdialog.js';
-        // let txt = document.getElementById('output-text')
-        // txt.innerHTML = sayHi('John');
+        let el2 = document.getElementById('confirm');
+        let opt = document.getElementById('dialog-output');
+        el2.addEventListener('click', () => {
+            showConfirm("Do you confirm?", opt)
+        })
+
+        let el3 = document.getElementById('prompt');
+        let name = document.getElementById('dialog-output');
+        el3.addEventListener('click', () => {
+            showPrompt("Please enter your name: ", name)
+        })
     </script>
 </body>
 </html>

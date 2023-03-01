@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Simple Dialogs</title>
-    <!-- <script src=“https://cdn.jsdelivr.net/npm/dompurify@2.3.2/dist/purify.min.js”></script> -->
-    <!-- <script type="text/javascript" src="src/purify.js"></script> -->
-    <!-- <script type="text/javascript" src="dist/purify.min.js"></script> -->
     <script src=node_modules/dompurify/dist/purify.min.js></script>
 </head>
 <body>
@@ -26,11 +23,10 @@
         
         let el2 = document.getElementById('confirm');
         let opt = document.getElementById('user-name');
-        el2.addEventListener('click', changeOutput);
-        function changeOutput() {
+        el2.addEventListener('click', () => {
             let bol = confirm("Do you confirm?");
             opt.textContent = `Confirm result: ${bol}`;
-        }
+        });
 
         let el3 = document.getElementById('prompt');
         let userName = document.getElementById('user-name')
@@ -43,8 +39,7 @@
                 userName.textContent = `Your name is: ${msg}`;
             }
         }
-        
-        // import DOMPurify from 'dompurify';
+
         let el4 = document.getElementById('saferPrompt');
         el4.addEventListener('click', safePromptMsg);
         function safePromptMsg() {
