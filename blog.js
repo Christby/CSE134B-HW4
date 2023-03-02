@@ -1,4 +1,4 @@
-let length = 0;
+let index = 0;
 
 let btn = document.getElementById('start-button');
 btn.addEventListener('click', () => {
@@ -12,8 +12,8 @@ cancel.addEventListener('click', () => {
     window.close();
 })
 
-function editItem(id) {
-    let item = document.getElementById(id);
+function editItem(idx) {
+    let item = document.getElementById(idx); // idx to id here
     let window = document.getElementById('edit-post');
     window.showModal();
     let post = item.parentElement;
@@ -28,27 +28,27 @@ function editItem(id) {
     // elements[2].value = prev_title;
     // elements[5].value = prev_date;
     // elements[8].value = prev_summary;
-    let _title = document.getElementById('new-title');
-    let _date = document.getElementById('new-date');
-    let _summary = document.getElementById('new-summary');
-    _title.value = prev_title;
-    _date.value = prev_date;
-    _summary.value = prev_summary;
+    let default_title = document.getElementById('new-title');
+    let default_date = document.getElementById('new-date');
+    let default_summary = document.getElementById('new-summary');
+    default_title.value = prev_title;
+    default_date.value = prev_date;
+    default_summary.value = prev_summary;
+    
     let update = document.getElementById('update');
     update.addEventListener('click', () => {
-        window.close();
         let title = document.getElementById('new-title').value;
         let date = document.getElementById('new-date').value;
         let summary = document.getElementById('new-summary').value;
-        console.log("this is id: ");
-        console.log(id);
+        // console.log(`This is id: edit${idx}`);
         console.log("this is the post object: ");
-        console.log(document.getElementById(id));
-        let post = document.getElementById(id).parentElement;
-        console.log(post);
+        console.log(document.getElementById(idx).parentElement); // idx to id here
+        let post = document.getElementById(idx).parentElement; // idx to id here and below
         post.innerHTML = `<div>${title}</div> <div>${date}</div> <div>${summary}</div>
-                        <b id="edit${length}" onClick="editItem('edit${length}')">Edit</b> | 
+                        <b id="edit${idx}" onClick="editItem('edit${idx}')">Edit</b> | 
                         <b id="delete" onClick="deleteItem(this)">Delete</b>`;
+        let window = document.getElementById('edit-post');
+        window.close();
     })
     let cancel = document.getElementById('cancel-update');
     cancel.addEventListener('click', () => {
@@ -62,7 +62,6 @@ function deleteItem(item) {
         let post = item.parentElement;
         let postList = item.parentElement.parentElement;
         postList.removeChild(post);
-        length -= 1;
     }
 }
 
@@ -76,8 +75,8 @@ submit.addEventListener('click', () => {
     let blogList = document.getElementById('blogList');
     let post = document.createElement('li');
     post.innerHTML = `<div>${title}</div> <div>${date}</div> <div>${summary}</div> 
-                    <b id="edit${length}" onClick="editItem('edit${length}')">Edit</b> | 
+                    <b id="edit${index}" onClick="editItem('edit${index}')">Edit</b> | 
                     <b id="delete" onClick="deleteItem(this)">Delete</b>`;
-    length += 1;
+    index ++;
     blogList.appendChild(post);
 })
