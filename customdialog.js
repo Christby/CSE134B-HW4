@@ -34,7 +34,6 @@ function showPrompt(message, outputTag) {
   dialog.querySelector('.header').textContent = 'Prompt';
   dialog.querySelector('.body').textContent = msg;
   const inputText = dialog.querySelector('.input-text');
-  console.log(inputText);
   dialog.querySelector('.ok').addEventListener('click', () => {
     let name = inputText.value;
     if (name === "") {

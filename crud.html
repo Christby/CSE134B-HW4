@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+    <script src=node_modules/dompurify/dist/purify.min.js></script>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <button id="start-button">Post</button>
+    <ul id="blogList"></ul>
+
+    <dialog id="add-post">
+        <div>
+            <label class="post-title">Post Title</label>
+            <input type="text" name="title" id="title" autocomplete="off">
+        </div>
+        <div>
+            <label class="post-date">Post Date</label>
+            <input type="date" name="date" id="date" autocomplete="off">
+        </div>
+        <div>
+            <label class="post-summary">Post Summary</label>
+            <input type="text" name="summary" id="summary" autocomplete="off">
+        </div>
+        <div class="buttons">
+            <button id="cancel">Cancel</button>
+            <button id="submit">Submit</button>
+        </div>
+    </dialog>
+
+    <dialog id="edit-post">
+        <div>
+            <label class="new-title">Post Title</label>
+            <input type="text" name="new-title" id="new-title" autocomplete="off">
+        </div>
+        <div>
+            <label class="new-date">Post Date</label>
+            <input type="date" name="new-date" id="new-date" autocomplete="off">
+        </div>
+        <div>
+            <label class="new-summary">Post Summary</label>
+            <input type="text" name="new-summary" id="new-summary" autocomplete="off">
+        </div>
+        <div class="buttons">
+            <button id="cancel-update">Cancel</button>
+            <button id="update">Update</button>
+        </div>
+    </dialog>
+
+    <script src="blog.js"></script>
+
+</body>
+</html>
