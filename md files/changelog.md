@@ -6,4 +6,6 @@
 
 4. For the submit buttons on the homepage and the skill page, I added an alert message to say thanks to people that is willing to leave their comment or information for me. 
 
-5. For the 3rd party script tag, I added a Google Analytics to my website, the code is in the head of my index.html file.
+5. I also changed the style of the above two links when hovering them, the changes in font size and color remind the users that this is a link that they can click on to view more information.
+
+6. For the 3rd party script tag, I added a Google Analytics to my website, the code is in the head of my index.html file. This function is very useful since I would be able to check the browsing history of my personal portfolio by differne users. Also I can see the location of the users and have a general idea how my site is doing and if I should make any changes to make it more popular.

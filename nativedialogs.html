@@ -34,9 +34,9 @@
         function promptMsg() {
             let msg = window.prompt("What's your name?");
             if (msg === null) {
-                userName.textContent = 'User didn\'t input his/her name';
+                userName.innerHTML = 'User didn\'t input his/her name';
             } else {
-                userName.textContent = `Your name is: ${msg}`;
+                userName.innerHTML = `Your name is: ${msg}`;
             }
         }
 
@@ -44,11 +44,11 @@
         el4.addEventListener('click', safePromptMsg);
         function safePromptMsg() {
             let msg = window.prompt("What's your name?");
-            if (msg === "") {
-                userName.textContent = 'User didn\'t input his/her name';
+            let cleanMsg = DOMPurify.sanitize(msg);
+            if (cleanMsg === "") {
+                userName.innerHTML = 'User didn\'t input his/her name';
             } else {
-                let cleanMsg = DOMPurify.sanitize(msg);
-                userName.textContent = `Your name is: ${cleanMsg}`;
+                userName.innerHTML = `Your name is: ${cleanMsg}`;
             }
         }
     </script>
