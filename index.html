@@ -76,14 +76,14 @@
             <div class="education">
                 <div class="college">
                     <h3>Education Background</h3>
-                    <p><b>Unicersity of California - San Diego</b></p>
+                    <p class="UCSD">Unicersity of California - San Diego</p>
                     <p>B.S. Computer Science<br><br>
                         B.S. Probability and Statistics<br><br>
                         GPA: 3.93
                     </p>
                 </div>
                 <div class="course">
-                    <h3>Relative Coursework</h3>
+                    <h3 class="courseCatalog">Relative Coursework</h3>
                     <ul>
                         <li>Fundamentals of Computer Programming</li>
                         <li>Advanced Data Structures</li>
@@ -116,12 +116,62 @@
             <p><label for="comment">Send me a message if you want:</label></p>
             <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
             <br>
-            <input type="submit" value="Send">
+            <input class="submit-button" type="submit" value="Send">
         </form>
         <br>
     </footer>
     <hr>
 
+    <script>
+        // keep navigation bar on the top of the screen
+        let navBar = document.querySelector('header');
+        navBar.style.top = '0';
+        navBar.style.position = 'fixed';
+        let sayHi = document.querySelector('h1');
+        sayHi.style.marginTop = '12%';
+        sayHi.style.marginBottom = '2%';
+
+        
+
+        // direct to UCSD homepage when clicking the school name
+        let ucsd = document.querySelector('.UCSD');
+        ucsd.style.fontWeight = 600;
+        ucsd.addEventListener("mouseenter", () => {
+            ucsd.style.color = 'blue';
+            ucsd.style.fontSize = '1.2rem';
+            ucsd.style.transition = '0.3s';
+        })
+        ucsd.addEventListener("mouseleave", () => {
+            ucsd.style.color = 'black';
+            ucsd.style.fontSize = '1rem';
+            ucsd.style.transition = '0.3s';
+        })
+        ucsd.addEventListener('click', () => {
+            location.href = "https://www.ucsd.edu";
+        })
+
+        // direct to CSE course catalog when clicking "Relative Coursework"
+        let course = document.querySelector('.courseCatalog');
+        course.addEventListener("mouseenter", () => {
+            course.style.color = 'blue';
+            course.style.fontSize = '1.4em';
+            course.style.transition = '0.3s';
+        })
+        course.addEventListener("mouseleave", () => {
+            course.style.color = 'black';
+            course.style.fontSize = '1.17em';
+            course.style.transition = '0.3s';
+        })
+        course.addEventListener('click', () => {
+            location.href = "https://catalog.ucsd.edu/courses/CSE.html";
+        })
+
+        // show a thank you message when people send message using the text box below
+        let btn = document.querySelector('.submit-button');
+        btn.addEventListener('click', () => {
+            alert("Thank you for your message!");
+        })
+    </script>
 
 </body>
 </html>
